@@ -5,7 +5,8 @@ function Card(props) {
     <div className="card">
       <img
         src="https://www.art-serdar.hr/mojportfeljsve123/wp-content/uploads/2018/06/fotografiranje-hotela-001.jpg"
-        width={270}
+        width={290}
+        height={180}
       />
       <div className="card-title">{props?.title}</div>
       <div className="card-content">{props?.content}</div>
