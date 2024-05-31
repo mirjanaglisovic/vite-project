@@ -13,12 +13,21 @@
   background-color: rgb(15, 15, 105);
   border-radius: 6px;
   padding: 6px;
-  width: 90px;
-  height: 10px;
+  height: 20px;
   margin-top: 30px;
   color: aliceblue;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
 }
 
+.icon {
+  font-size: 18px;
+  padding-left: 6px;
+  color: aliceblue;
+}
 .card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -26,7 +35,7 @@
 .card-title {
   font-size: 1.4em;
   margin-bottom: 8px;
-  margin-right: 190px;
+  margin: 10px;
   color: black;
 }
 
@@ -50,6 +59,7 @@
   /* margin-top: 12px; */
 }
 
-.hotels {
-  margin: 180px;
+.button-text {
+  color: aliceblue;
+  font-size: 14px;
 }
