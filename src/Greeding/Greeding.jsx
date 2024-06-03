@@ -1,4 +1,4 @@
-import "../Greeding.css";
+import "./Greeting.css";
 
 function Greeting(props) {
   return (
