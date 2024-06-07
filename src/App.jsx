@@ -2,10 +2,11 @@
 import "./App.css";
 // import MySentence from "./components/MySentence/MySentence";
 // import Greeting from "./components/Greeting/Greeting";
-import { Navbar } from "./NavBar/NavBar";
-import { Footer } from "./Footer/Footer";
+import { Navbar } from "./components/NavBar/NavBar";
+import { Footer } from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import Hotels from "./pages/Hotels";
+import Hotel from "./pages/Hotel/Hotel";
 // import Hotel from "./components/Cards/HotelCard";
 
 function App() {
@@ -74,7 +75,8 @@ function App() {
           <Routes>
             <Route path="/" element={<p>Pocetna stranica</p>} />
             <Route path="/hotels" element={<Hotels />} />
-            {/* <Route path="/hotels/:id" element={<Hotel />} /> */}
+            <Route path="/hotels/:id" element={<Hotel />} />
+            <Route path="/teams" element={<Teams />} />
           </Routes>
         </div>
       </main>

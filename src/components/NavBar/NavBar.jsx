@@ -25,7 +25,7 @@ export function Navbar() {
                 isActive ? "active-link li" : "classic-link li"
               }
             >
-              Your list
+              Teams
             </NavLink>
             <NavLink
               to="/apartments"
