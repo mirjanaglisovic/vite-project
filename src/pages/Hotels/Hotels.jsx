@@ -1,5 +1,5 @@
-import HotelCard from "../components/Cards/HotelCard";
-import hotels from "../common/hotel.json";
+import HotelCard from "../../components/Cards/HotelCard";
+import hotels from "../../common/hotel.json";
 import "./Hotels.css";
 
 function Hotels() {

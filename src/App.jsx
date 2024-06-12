@@ -2,11 +2,13 @@
 import "./App.css";
 // import MySentence from "./components/MySentence/MySentence";
 // import Greeting from "./components/Greeting/Greeting";
-import { Navbar } from "./components/NavBar/NavBar";
+import { Navbar } from "./components/Navbar/Navbar";
 import { Footer } from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import Hotels from "./pages/Hotels";
+import Hotels from "./pages/Hotels/Hotels";
 import Hotel from "./pages/Hotel/Hotel";
+// import Home from "./pages/Home/Home";
+import Teams from "./pages/Teams/Teams";
 // import Hotel from "./components/Cards/HotelCard";
 
 function App() {
