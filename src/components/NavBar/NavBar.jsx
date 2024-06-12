@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./NavBar.css";
+import "./Navbar.css";
 export function Navbar() {
   return (
     <header>
@@ -20,7 +20,7 @@ export function Navbar() {
               Hotels
             </NavLink>
             <NavLink
-              to="/list"
+              to="/teams"
               className={({ isActive }) =>
                 isActive ? "active-link li" : "classic-link li"
               }

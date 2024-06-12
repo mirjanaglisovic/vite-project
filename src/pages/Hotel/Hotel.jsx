@@ -1,6 +1,8 @@
-import { userParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./Hotel.css";
-import hotels from "../../common/hotel.json";
+import hotels from "../../common/hotels.json";
+import { FaMapMarkerAlt, FaSwimmer, FaWifi, FaSpa } from "react-icons/fa";
+import { CiHeart, CiLock, CiParking1 } from "react-icons/ci";
 
 function Hotel() {
   const { id } = useParams();

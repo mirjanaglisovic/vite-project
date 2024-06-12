@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
 import teamsJSON from "../../common/teams.json";
-import TeamCard from "../../components/TeamCard/TeamCard";
+import TeamCard from "../../components/Cards/TeamCard/TeamCard";
 import "./Teams.css";
 
 export default function Teams() {
@@ -9,7 +9,7 @@ export default function Teams() {
 
   // console.log(Math.random(0, 1));
   // console.log(new Date().getTime());
-  s;
+
   const deleteTeam = (id) => {
     const filteredTeams = teams.filter((team) => team.id !== id);
     setTeams(filteredTeams);

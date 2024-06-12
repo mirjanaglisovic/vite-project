@@ -7,9 +7,8 @@ import { Footer } from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import Hotels from "./pages/Hotels/Hotels";
 import Hotel from "./pages/Hotel/Hotel";
-// import Home from "./pages/Home/Home";
+import Home from "./pages/Home/Home";
 import Teams from "./pages/Teams/Teams";
-// import Hotel from "./components/Cards/HotelCard";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -73,14 +72,12 @@ function App() {
       ))} */}
       <Navbar />
       <main className="main">
-        <div className="hotels">
-          <Routes>
-            <Route path="/" element={<p>Pocetna stranica</p>} />
-            <Route path="/hotels" element={<Hotels />} />
-            <Route path="/hotels/:id" element={<Hotel />} />
-            <Route path="/teams" element={<Teams />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels/:id" element={<Hotel />} />
+          <Route path="/teams" element={<Teams />} />
+        </Routes>
       </main>
       <Footer />
     </div>
