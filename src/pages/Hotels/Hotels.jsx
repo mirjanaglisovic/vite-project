@@ -10,12 +10,12 @@ function Hotels() {
   const numOfHotels = hotels.length;
   const numOfPages = Math.ceil(numOfHotels / numOfHotelsPerPage);
 
-  // useEffect( => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // }),[page];
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [page]);
   return (
     <>
       <div className="hotels">
@@ -33,6 +33,7 @@ function Hotels() {
           // .slice(0, 8) // prikazivanje prvih 8 hotela  111111
           //.slice(8, 16) // prikazivanje drugih 8 hotela 222222
           // .slice(16, 24) // prikazivanje trecih 8 hotela  333333
+          // get the formula for slicing
           .slice(numOfHotelsPerPage * (page - 1), numOfHotelsPerPage * page)}
       </div>
       <Pagination numOfPages={numOfPages} page={page} setPage={setPage} />

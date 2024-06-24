@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
 import QuoteCard from "../../components/Cards/QuoteCard/QuoteCard";
 import CircularProgress from "@mui/material/CircularProgress";
