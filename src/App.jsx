@@ -77,6 +77,7 @@ function App() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/hotels/:id" element={<Hotel />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/quotes" element={<Quotes />} />
         </Routes>
       </main>
       <Footer />
