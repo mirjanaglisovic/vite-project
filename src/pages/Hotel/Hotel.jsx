@@ -1,12 +1,42 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./Hotel.css";
 import hotels from "../../common/hotels.json";
 import { FaMapMarkerAlt, FaSwimmer, FaWifi, FaSpa } from "react-icons/fa";
-import { CiHeart, CiLock, CiParking1 } from "react-icons/ci";
+import { CiLock, CiParking1 } from "react-icons/ci";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
+import { useState, useEffect } from "react";
 
 function Hotel() {
   const { id } = useParams();
+  const { state } = useLocation();
+  const [updatedFavoriteHotels, setUpdatedFavoriteHotels] = useState(
+    state.favoriteHotels
+  );
+  const [isFavoriteState, setIsFavoriteState] = useState(state.isFavorite);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "favoriteHotels",
+      JSON.stringify(updatedFavoriteHotels)
+    );
+  }, [updatedFavoriteHotels]);
+
   const hotel = hotels.find((hotel) => hotel.id === +id);
+
+  const handleFavoriteToggle = () => {
+    if (!isFavoriteState) {
+      const newFavoriteHotels = [...updatedFavoriteHotels, hotel.id];
+      setUpdatedFavoriteHotels(newFavoriteHotels);
+      setIsFavoriteState(true);
+    } else {
+      const newFavoriteHotels = updatedFavoriteHotels.filter(
+        (hotelId) => hotelId !== hotel.id
+      );
+      setUpdatedFavoriteHotels(newFavoriteHotels);
+      setIsFavoriteState(false);
+    }
+  };
 
   return (
     <>
@@ -51,9 +81,21 @@ function Hotel() {
                 Spa & Wellness
               </li>
             </ul>
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                gap: "10px",
+              }}
+            >
               <button>Reserve</button>
-              <CiHeart className="icons" />
+              <button onClick={handleFavoriteToggle}>
+                {isFavoriteState ? (
+                  <FaHeart fill="red" className="heart-icon" size={38} />
+                ) : (
+                  <FaRegHeart fill="red" className="heart-icon" size={38} />
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -63,14 +105,3 @@ function Hotel() {
 }
 
 export default Hotel;
-
-// Domaci zadatak:
-
-// Obnoviti sledece metode kod nizova:
-
-// forEach()
-// map()
-// filter()
-// reduce()
-// find()
-// findIndex()

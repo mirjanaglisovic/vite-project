@@ -9,6 +9,7 @@ function Quotes() {
   const [quotes, setQuotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(12);
+  const [totalPage, setTotalPage] = useState(0);
 
   async function getQuotes() {
     setIsLoading(true);
@@ -19,6 +20,7 @@ function Quotes() {
       const result = await response.json();
       console.log(result);
       setQuotes(result.results);
+      setTotalPage(result.totalPages);
     } catch (error) {
       console.log(error);
     } finally {
@@ -45,6 +47,8 @@ function Quotes() {
             tags={quote.tags}
           />
         ))
+        // <Pagination count={10} page={page} onChange={handleChange}
+        // size="large"/>
       )}
     </div>
   );
