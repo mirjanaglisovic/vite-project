@@ -10,8 +10,13 @@ import Hotel from "./pages/Hotel/Hotel";
 import Home from "./pages/Home/Home";
 import Teams from "./pages/Teams/Teams";
 import Quotes from "./pages/Quotes/Quotes";
+import Auth from "./pages/Auth/Auth";
+import { useContext, useEffect } from "react";
+import { AppContext } from "./context/AppContext";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
+  const { setLoggedInUser } = useContext(AppContext);
   // const [count, setCount] = useState(0);
   // const [arr, setArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
@@ -47,6 +52,16 @@ function App() {
   // a+1
   // setCount((prevValue) => prevValue++) NIJE KOREKTNO
   // setCount((prevValue) => prevValue + 3)
+
+  useEffect(() => {
+    const localLoggedInUser = localStorage.getItem("loggedInUser");
+    if (localLoggedInUser) {
+      setLoggedInUser(JSON.parse(localLoggedInUser));
+    } else {
+      setLoggedInUser(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     // <React.Fragment>
     <div className="app">
@@ -74,11 +89,57 @@ function App() {
       <Navbar />
       <main className="main">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hotels" element={<Hotels />} />
-          <Route path="/hotels/:id" element={<Hotel />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/quotes" element={<Quotes />} />
+          {/* {!localStorage.getItem("loggedInUser") ? (
+            <Route path="/auth" element={<Auth />} />
+          ) : (
+            navigate("/")
+          )} */}
+          <Route
+            path="/auth"
+            element={
+              !localStorage.getItem("loggedInUser") ? <Auth /> : <Home />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels"
+            element={
+              <ProtectedRoute>
+                <Hotels />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels/:id"
+            element={
+              <ProtectedRoute>
+                <Hotel />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teams"
+            element={
+              <ProtectedRoute>
+                <Teams />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/quotes"
+            element={
+              <ProtectedRoute>
+                <Quotes />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />

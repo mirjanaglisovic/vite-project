@@ -4,12 +4,16 @@ import QuoteCard from "../../components/Cards/QuoteCard/QuoteCard";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import "./Quotes.css";
+import Pagination from "@mui/material/Pagination";
 
 function Quotes() {
   const [quotes, setQuotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(12);
-  const [totalPage, setTotalPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+  const [totalPages, setTotalPages] = useState(0);
 
   async function getQuotes() {
     setIsLoading(true);
@@ -20,15 +24,18 @@ function Quotes() {
       const result = await response.json();
       console.log(result);
       setQuotes(result.results);
-      setTotalPage(result.totalPages);
+      setTotalPages(result.totalPages);
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
     }
   }
-
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     getQuotes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
@@ -39,16 +46,25 @@ function Quotes() {
           <CircularProgress />
         </Box>
       ) : (
-        quotes.map((quote) => (
-          <QuoteCard
-            key={quote._id}
-            author={quote.author}
-            quote={quote.content}
-            tags={quote.tags}
-          />
-        ))
-        // <Pagination count={10} page={page} onChange={handleChange}
-        // size="large"/>
+        <>
+          {quotes.map((quote) => (
+            <QuoteCard
+              key={quote._id}
+              author={quote.author}
+              quote={quote.content}
+              tags={quote.tags}
+            />
+          ))}
+          <div className="pagination-wrapper">
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={handleChange}
+              size="large"
+              color="primary"
+            />
+          </div>
+        </>
       )}
     </div>
   );

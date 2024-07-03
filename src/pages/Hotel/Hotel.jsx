@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useLocation, useParams } from "react-router-dom";
 import "./Hotel.css";
 import hotels from "../../common/hotels.json";
