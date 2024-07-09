@@ -50,6 +50,7 @@ export function Navbar() {
               </NavLink>
             </ul>
             <button
+              className="logout"
               onClick={() => {
                 setLoggedInUser(null);
                 localStorage.removeItem("loggedInUser");
